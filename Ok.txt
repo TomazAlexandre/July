@@ -1,0 +1,72 @@
+# Explicação Simplificada do Modelo de Regressão
+
+**Modelos de regressão** são métodos estatísticos utilizados para prever o valor de uma variável dependente (também chamada de variável resposta) com base no valor de uma ou mais variáveis independentes (ou variáveis preditoras). Em outras palavras, modelos de regressão buscam entender e modelar a relação entre variáveis. A regressão linear, por exemplo, tenta ajustar uma linha reta aos dados para prever valores futuros ou explicar a variação dos dados.
+
+## Quando Utilizar Modelos de Regressão?
+
+Modelos de regressão são amplamente utilizados em áreas como economia, engenharia, ciências sociais e muitos outros domínios para:
+
+- Prever valores futuros com base em padrões históricos.
+- Explicar a variação de uma variável dependente em função de outras variáveis.
+- Analisar o impacto de variáveis preditoras em um resultado de interesse.
+
+## Exemplo Numérico
+
+Vamos utilizar um conjunto de dados com variáveis hipotéticas para demonstrar o funcionamento do modelo de regressão linear simples. Nesse exemplo, queremos prever a `variável resposta (y)` com base em uma `variável preditora (x)`. Vamos usar um conjunto de dados hipotético com as colunas `Horas de Estudo` (variável preditora) e `Notas` (variável resposta).
+
+### Resultados da Regressão
+
+Após realizar o ajuste do modelo, obtemos:
+
+- **R²**: Esta métrica indica o quão bem os valores previstos pelo modelo se ajustam aos dados reais. Varia entre 0 e 1, onde valores próximos de 1 indicam um bom ajuste.
+- **Coeficientes da Regressão**: Os coeficientes (inclinação e intercepto) representam o impacto de cada variável preditora na variável resposta.
+
+### Gráfico
+
+Abaixo está o gráfico com os valores reais (`y`) no eixo y e a `variável preditora (x)` no eixo x, junto com a **reta de regressão**, que representa o ajuste do modelo.
+
+![Gráfico de Regressão](attachment:image.png)
+
+
+import numpy as np
+import pandas as pd
+import matplotlib.pyplot as plt
+from sklearn.linear_model import LinearRegression
+from sklearn.metrics import r2_score
+
+# Conjunto de dados hipotético
+dados = {
+    "Horas de Estudo": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10],
+    "Notas": [50, 55, 58, 62, 65, 68, 70, 72, 75, 80]
+}
+df = pd.DataFrame(dados)
+
+# Separando variável independente (X) e variável dependente (y)
+X = df[["Horas de Estudo"]]
+y = df["Notas"]
+
+# Treinando o modelo de regressão linear
+modelo = LinearRegression()
+modelo.fit(X, y)
+
+# Predizendo valores
+y_pred = modelo.predict(X)
+
+# Calculando R² e coeficientes
+r2 = r2_score(y, y_pred)
+coeficiente = modelo.coef_[0]
+intercepto = modelo.intercept_
+
+print(f"Coeficiente da Regressão (Inclinação): {coeficiente}")
+print(f"Intercepto: {intercepto}")
+print(f"R²: {r2}")
+
+# Gráfico da regressão
+plt.figure(figsize=(10, 5))
+plt.scatter(X, y, color="blue", label="Dados Reais")
+plt.plot(X, y_pred, color="red", label="Reta de Regressão")
+plt.xlabel("Horas de Estudo")
+plt.ylabel("Notas")
+plt.title("Regressão Linear - Previsão de Notas com base em Horas de Estudo")
+plt.legend()
+plt.show()
