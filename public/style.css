@@ -1,25 +1,45 @@
+/* Reset básico */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
 body {
-    font-family: Arial, sans-serif;
+    font-family: 'Arial', sans-serif;
     display: flex;
     justify-content: center;
     align-items: center;
     height: 100vh;
-    margin: 0;
-    background-color: #f3f3f3;
+    background: linear-gradient(135deg, #2980b9, #6dd5fa);
+    color: #333;
 }
 
 #app {
     width: 90%;
     max-width: 400px;
     background: #fff;
-    border-radius: 10px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-    padding: 20px;
+    border-radius: 12px;
+    box-shadow: 0 10px 15px rgba(0, 0, 0, 0.2);
+    overflow: hidden;
     text-align: center;
+}
+
+h1 {
+    font-size: 1.5em;
+    color: #2c3e50;
+    margin-bottom: 10px;
+}
+
+p {
+    font-size: 1.1em;
+    color: #7f8c8d;
+    margin-bottom: 20px;
 }
 
 .screen {
     display: none;
+    padding: 30px 20px;
 }
 
 .screen.active {
@@ -27,16 +47,22 @@ body {
 }
 
 button {
-    background-color: #4CAF50;
-    color: white;
-    padding: 10px 20px;
+    background: #3498db;
+    color: #fff;
+    font-size: 1em;
+    padding: 12px 25px;
     border: none;
-    border-radius: 5px;
+    border-radius: 6px;
     cursor: pointer;
+    transition: background 0.3s ease;
 }
 
 button:hover {
-    background-color: #45a049;
+    background: #2980b9;
+}
+
+button:focus {
+    outline: none;
 }
 
 .hidden {
