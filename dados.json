@@ -1,0 +1,5 @@
+[
+    { "id": 1, "destino": "Estação A", "horario": "08:30", "plataforma": "1", "direcao": "à direita" },
+    { "id": 2, "destino": "Estação B", "horario": "09:00", "plataforma": "2", "direcao": "à esquerda" },
+    { "id": 3, "destino": "Estação C", "horario": "09:30", "plataforma": "1", "direcao": "em frente" }
+]
